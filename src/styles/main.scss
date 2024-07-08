@@ -1,0 +1,14 @@
+@import "./tailwind.scss";
+
+@import "@fontsource/syne";
+
+@import "glowing-border.scss";
+@import "timline-animate.scss";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
