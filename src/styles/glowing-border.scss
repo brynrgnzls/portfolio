@@ -1,0 +1,28 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.glow-accent::before {
+  content: "";
+  position: absolute;
+
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #c52323,
+    #1119d5,
+    #c52323
+  );
+  animation: rotation 2s linear infinite;
+  inset: -4px;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
