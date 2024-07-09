@@ -5,6 +5,9 @@ import { createRoot } from "react-dom/client";
 // Pages
 import Root from "./pages/Root.tsx";
 
+// Fonts
+import "@fontsource/syne";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,5 +22,5 @@ const root = createRoot(document.getElementById("root") as HTMLDivElement);
 root.render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>
+  </StrictMode>,
 );
