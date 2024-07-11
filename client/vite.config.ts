@@ -5,12 +5,5 @@ export default defineConfig(() => {
   return {
     plugins: [react()],
     mode: "development",
-    build: {
-      rollupOptions: {
-        output: {
-          dir: "build",
-        },
-      },
-    },
   };
 });
