@@ -7,7 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwindcss:dev": "tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch",
-    "start:dev": "vite dev && tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch"
+    "start:dev": "vite dev && tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch",
+    "tailwindcss:build": "tailwindcss --minify -i ./src/styles/main.scss -o ./dist/index.css",
+    "start:build": "vite build",
+    "star:preview": "vite preview"
   },
   "keywords": [],
   "author": "brynrgnzls@gmail.com",
