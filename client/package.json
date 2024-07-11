@@ -10,7 +10,7 @@
     "start:dev": "vite dev && tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch"
   },
   "keywords": [],
-  "author": "Bryan Gonzales",
+  "author": "brynrgnzls@gmail.com",
   "license": "ISC",
   "dependencies": {
     "@tsparticles/engine": "^3.5.0",
