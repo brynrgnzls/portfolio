@@ -1,12 +1,13 @@
 {
-  "name": "portfolio",
+  "name": "client",
   "version": "1.0.0",
-  "description": "Personal Portfolio",
+  "description": "Portfolio Client Side Application",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwindcss-watch": "tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch"
+    "tailwindcss:dev": "tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch",
+    "start:dev": "vite dev && tailwindcss -i ./src/styles/main.scss -o ./src/index.css --watch"
   },
   "keywords": [],
   "author": "Bryan Gonzales",
