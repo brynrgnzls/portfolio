@@ -5,7 +5,7 @@ import { ReactSVG } from "react-svg";
 
 function Footer() {
   return (
-    <footer className="bg-[#171717] px-4 pb-3 pt-6 sm:grid sm:grid-cols-8 sm:gap-y-5 sm:px-10">
+    <footer className="bg-[#171717] px-4 pb-3 pt-6 sm:grid sm:grid-cols-8 sm:gap-y-5 sm:px-10" id="contact">
       <Contact />
       <CopyrightLayout>
         <SocialLinks />

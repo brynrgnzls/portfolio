@@ -6,7 +6,7 @@ import Particles from "./Particles";
 function Cover() {
   console.log("Cover Rendered");
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center px-4 max-sm:pb-16 sm:p-10 md:flex-row-reverse md:gap-6 md:px-[100px] 2xl:px-[150px]">
+    <div className="flex h-screen w-screen flex-col items-center justify-center px-4 max-sm:pb-16 sm:p-10 md:flex-row-reverse md:gap-6 md:px-[100px] 2xl:px-[150px]" id="home">
       <Avatar />
       <ContextLayout>
         <Header />
@@ -93,7 +93,7 @@ function ViewProjectsButton() {
 
 function ContextLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="max-md:max-w-[550px] max-sm:max-w-sm md:w-full">
+    <div className="max-md:max-w-[550px] max-sm:max-w-sm md:w-full" >
       {children}
     </div>
   );

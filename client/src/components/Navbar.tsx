@@ -22,6 +22,7 @@ function Nav() {
         activeSrc={homeAccent}
         active={activeNav === "home"}
         setNavHandler={handleSetActiveNav.bind(null, "home")}
+        targetId="home"
       >
         Home
       </NavButton>
@@ -30,6 +31,7 @@ function Nav() {
         activeSrc={infoAcecnt}
         active={activeNav === "info"}
         setNavHandler={handleSetActiveNav.bind(null, "info")}
+        targetId="info"
       >
         Info
       </NavButton>
@@ -38,6 +40,7 @@ function Nav() {
         activeSrc={codeAccent}
         active={activeNav === "project"}
         setNavHandler={handleSetActiveNav.bind(null, "project")}
+        targetId="projects"
       >
         Project
       </NavButton>
@@ -46,6 +49,7 @@ function Nav() {
         activeSrc={contactAccent}
         active={activeNav === "contact"}
         setNavHandler={handleSetActiveNav.bind(null, "contact")}
+        targetId="contact"
       >
         Contact
       </NavButton>
@@ -68,19 +72,22 @@ function NavButton({
   src,
   activeSrc,
   active = false,
+  targetId,
   setNavHandler,
 }: NavButtonProp) {
   const handleNavChange = () => {
     setNavHandler();
   };
   return (
-    <div
+    <a
       className="-pt-0.5 relative flex flex-grow basis-0 flex-col items-center justify-center gap-2 p-2 text-xs text-[#3d3d3d] hover:cursor-pointer hover:bg-[#171717]"
+      href={`#${targetId}`}
       onClick={handleNavChange}
     >
       <ReactSVG src={active ? activeSrc : src} />
+
       {children}
-    </div>
+    </a>
   );
 }
 
@@ -93,6 +100,7 @@ interface NavButtonProp {
   activeSrc: string;
   active: boolean;
   setNavHandler: () => void;
+  targetId: string;
 }
 
 export default memo(Nav);

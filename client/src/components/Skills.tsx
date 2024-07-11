@@ -40,7 +40,7 @@ import { memo } from "react";
 
 function Skills() {
   return (
-    <div className="2xl my-10 p-4 sm:my-16 sm:px-10 md:px-[100px] lg:my-24 2xl:grid 2xl:grid-cols-12 2xl:px-[150px]">
+    <div className="2xl my-10 p-4 sm:my-16 sm:px-10 md:px-[100px] lg:my-24 2xl:grid 2xl:grid-cols-12 2xl:px-[150px]" id="projects">
       <Header />
       <div className="sm:hidden">
         <SkillsIconsLayout>
