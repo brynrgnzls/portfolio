@@ -47,12 +47,11 @@ export default function MouseTexttInput() {
 
   return (
     <div
-      className="absolute z-50"
+      className="fixed z-50"
       style={{
         left: x + 15,
         top: y + 15,
-        display: "block",
-        visibility: inputOpen ? "visible" : "hidden",
+        display: inputOpen ? "block" : "none",        
       }}
     >
       <input
@@ -62,7 +61,7 @@ export default function MouseTexttInput() {
         style={{ borderColor: inputValue.length < 60 ? "#1115d5" : "#f87171" }}
         className="border-red appearance-none rounded-md border-2 border-solid p-1.5 pr-12 text-sm text-dark-950 outline-none"
       />
-      <span className="relative right-10 text-xs text-dark-700">
+      <span className="absolute right-3 top-3 text-xs text-dark-700">
         {inputValue.length}/60
       </span>
     </div>
