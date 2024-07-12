@@ -2,7 +2,7 @@ import fastify from "fastify";
 
 const app = fastify();
 
-app.register(import("../app"));
+app.register(import("../build/app.js"));
 
 export default async function (req, res) {
   await app.ready();
