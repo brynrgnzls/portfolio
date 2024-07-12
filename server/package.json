@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "dotenv -e .env.development -- tsx watch index.ts",
+    "start:prod": "dotenv -e .env -- tsx watch index.ts"
+  },
+  "keywords": [],
+  "author": "brynrgnzls@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "dotenv-cli": "^7.4.2",
+    "fastify": "^4.28.1",
+    "mongodb": "^6.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "tsx": "^4.16.2"
+  }
+}
