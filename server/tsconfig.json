@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./types/*"]
+    "module": "ES2020",
+    "typeRoots": ["./node_modules/@types", "./types/*"],
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
   }
 }

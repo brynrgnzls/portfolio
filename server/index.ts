@@ -1,8 +1,8 @@
 import fastify from "fastify";
-import { fastifyConfig } from "./config";
+
 import requestDecorators from "./hooks/requestDecorators";
 
-const app = fastify(fastifyConfig);
+const app = fastify();
 
 // ====== CORE PLUGINS ====== //
 
