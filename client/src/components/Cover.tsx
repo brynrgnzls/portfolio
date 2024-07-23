@@ -1,10 +1,7 @@
 import { memo } from "react";
 import pfp from "../assets/placeholder.png";
-import useMousePoint from "../hooks/useMousePoint";
-import Particles from "./Particles";
 
 function Cover() {
-  console.log("Cover Rendered");
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center px-4 max-sm:pb-16 sm:p-10 md:flex-row-reverse md:gap-6 md:px-[100px] 2xl:px-[150px]" id="home">
       <Avatar />

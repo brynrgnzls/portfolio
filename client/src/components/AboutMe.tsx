@@ -1,11 +1,13 @@
 import { ReactSVG } from "react-svg";
-
-import pfp from "../assets/placeholder.png";
 import mail from "../assets/mail_20.svg";
 import github from "../assets/github_20.svg";
-export default function AboutMe() {
+import { memo } from "react";
+export function AboutMe() {
   return (
-    <div className="p-4 my-16 sm:p-10 md:p-[100px] 2xl:grid 2xl:grid-cols-12 2xl:gap-8 2xl:px-[150px]" id="info">
+    <div
+      className="my-16 p-4 sm:p-10 md:p-[100px] 2xl:grid 2xl:grid-cols-12 2xl:gap-8 2xl:px-[150px]"
+      id="info"
+    >
       <Header />
       <AboutMeLayout>
         <Image />
@@ -28,7 +30,7 @@ export default function AboutMe() {
 
 function AboutMeLayout({ children }: ChildProp) {
   return (
-    <div className="flex col-start-2 -col-end-2 flex-col gap-4 sm:flex-row md:gap-6 lg:gap-10 2xl:gap-14">
+    <div className="col-start-2 -col-end-2 flex flex-col gap-4 sm:flex-row md:gap-6 lg:gap-10 2xl:gap-14">
       {children}
     </div>
   );
@@ -42,7 +44,7 @@ function ContactDiv({ children }: ChildProp) {
 
 function Header() {
   return (
-    <p className="mb-6 2xl:col-span-full text-center text-2xl font-bold tracking-widest sm:text-3xl">
+    <p className="mb-6 text-center text-2xl font-bold tracking-widest sm:text-3xl 2xl:col-span-full">
       ABOUT <span className="bg-accent bg-clip-text text-transparent">ME</span>
     </p>
   );
@@ -105,3 +107,5 @@ function DownloadCVBtn() {
 interface ChildProp {
   children: React.ReactNode;
 }
+
+export default memo(AboutMe);

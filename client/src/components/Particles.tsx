@@ -13,9 +13,7 @@ function Particles() {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container) => {
-    console.log("Particles loaded", container);
-  };
+  const particlesLoaded = async (container?: Container) => {};
 
   const options = useMemo<IParticlesProps["options"]>(
     () => ({
