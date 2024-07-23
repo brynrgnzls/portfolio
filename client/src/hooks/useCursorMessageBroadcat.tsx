@@ -6,11 +6,14 @@ export default function useCursorMessageBroadcast() {
     Map<string, IUserCoordMessage>
   >(new Map());
   const privateChannelRef = useRef(pusher.subscribe("private-common"));
+  const messageRemoveTimeoutId = useRef<NodeJS.Timeout>();
+  const messageRef = useRef<string>();
 
   const handleMouseMove = (e: MouseEvent) => {
     userCoordMessage.set(localStorage.getItem("cookieId")!, {
-      x: e.pageX,
-      y: e.pageY,
+      x: e.clientX,
+      y: e.clientY,
+      message: messageRef.current,
     }),
       privateChannelRef.current.trigger(
         "client-coord_message",
@@ -22,15 +25,46 @@ export default function useCursorMessageBroadcast() {
   };
   const handleMessageBroadcast = (data: {
     message: string;
-    sender: string;
+    senderId: string;
   }) => {
-    if (userCoordMessage == undefined) return;
-    setUserCoordMessage((prev) => {
-      if (prev == undefined) return prev;
-      prev.set(data.sender, {
-        ...prev.get(data.sender)!,
-        message: data.message,
+    if (localStorage.getItem("cookieId") === data.senderId)
+      messageRef.current = data.message;
+    if (messageRemoveTimeoutId.current)
+      clearTimeout(messageRemoveTimeoutId.current);
+
+    // remove message after 5s
+    messageRemoveTimeoutId.current = setTimeout(() => {
+      const copyCoordMessage = new Map(userCoordMessage.entries());
+      copyCoordMessage.set(data.senderId, {
+        ...copyCoordMessage.get(data.senderId)!,
+        message: undefined,
       });
+      privateChannelRef.current.trigger(
+        "client-coord_message",
+        Object.fromEntries(copyCoordMessage.entries()),
+      );
+      messageRef.current = undefined;
+    }, 5000);
+
+    const copyCoordMessage = new Map(userCoordMessage.entries());
+    copyCoordMessage.set(data.senderId, {
+      ...copyCoordMessage.get(data.senderId)!,
+      message: data.message,
+    });
+
+    privateChannelRef.current.trigger(
+      "client-coord_message",
+      Object.fromEntries(copyCoordMessage.entries()),
+    );
+  };
+  const handleMouseOut = (e: MouseEvent) => {
+    privateChannelRef.current.trigger("client-coord_message_out", {
+      cookieId: localStorage.getItem("cookieId"),
+    });
+  };
+  const handleMouseOutBroadcast = (data: { cookieId: string }) => {
+    setUserCoordMessage((prev) => {
+      prev.delete(data.cookieId);
       return new Map(prev);
     });
   };
@@ -46,15 +80,23 @@ export default function useCursorMessageBroadcast() {
         }
       };
     };
-    window.addEventListener("mousemove", throttle(handleMouseMove, 90));
+    const handleInnerMouseMove = throttle(handleMouseMove, 95);
+
+    window.addEventListener("mouseout", handleMouseOut);
+    window.addEventListener("mousemove", handleInnerMouseMove);
     privateChannelRef.current.bind(
       "client-coord_message",
       handleCoordBroadcast,
     );
+    privateChannelRef.current.bind(
+      "client-coord_message_out",
+      handleMouseOutBroadcast,
+    );
     privateChannelRef.current.bind("client-message", handleMessageBroadcast);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", handleInnerMouseMove);
+      window.removeEventListener("mouseout", handleMouseOut);
       privateChannelRef.current.unbind_all();
       privateChannelRef.current.unsubscribe();
     };
