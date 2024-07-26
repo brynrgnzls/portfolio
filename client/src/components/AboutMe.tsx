@@ -1,11 +1,10 @@
-import { ReactSVG } from "react-svg";
 import mail from "../assets/mail_20.svg";
 import github from "../assets/github_20.svg";
-import { memo } from "react";
+import { memo, useEffect, useRef } from "react";
 export function AboutMe() {
   return (
     <div
-      className="my-16 p-4 sm:p-10 md:p-[100px] 2xl:grid 2xl:grid-cols-12 2xl:gap-8 2xl:px-[150px]"
+      className="my-16 p-4 sm:p-10 lg:p-[100px] 2xl:grid 2xl:grid-cols-12 2xl:gap-8 2xl:px-[150px]"
       id="info"
     >
       <Header />
@@ -18,8 +17,14 @@ export function AboutMe() {
           <ActionDiv>
             <DownloadCVBtn />
             <ContactDiv>
-              <ReactSVG src={mail} />
-              <ReactSVG src={github} />
+              <img
+                src={mail}
+                className="m p-2 hover:cursor-pointer md:scale-125"
+              />
+              <img
+                src={github}
+                className="m p-2 hover:cursor-pointer md:scale-125"
+              />
             </ContactDiv>
           </ActionDiv>
         </ContextGroup>
@@ -44,17 +49,47 @@ function ContactDiv({ children }: ChildProp) {
 
 function Header() {
   return (
-    <p className="mb-6 text-center text-2xl font-bold tracking-widest sm:text-3xl 2xl:col-span-full">
-      ABOUT <span className="bg-accent bg-clip-text text-transparent">ME</span>
+    <p className="mb-6 text-center text-2xl font-bold tracking-widest sm:text-3xl xl:text-4xl 2xl:col-span-full">
+      ABOUT{" "}
+      <span className="bg-acccentText bg-clip-text text-transparent">ME</span>
     </p>
   );
 }
 
 function Image() {
+  const lazyBgRef = useRef<HTMLDivElement>(null);
+
+  const lazyBGEffect = () => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      if (
+        entries[0].isIntersecting &&
+        !entries[0].target.className.includes("lazy-profile")
+      ) {
+        entries[0].target.className =
+          entries[0].target.className.concat(" lazy-profile");
+      }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: "150px",
+    });
+
+    if (lazyBgRef.current) observer.observe(lazyBgRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  };
+
+  useEffect(lazyBGEffect, []);
+
   return (
     <div className="relative h-64 after:absolute after:-z-10 after:size-full after:bg-accent after:blur-xl sm:h-auto sm:flex-1">
-      <div className="sm:pl-.5 absolute size-full overflow-clip rounded-lg bg-accent pl-1 pt-1 md:pl-2 md:pt-2">
-        <div className="absolute flex size-full items-center justify-center overflow-clip rounded-lg bg-[url('https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.15752-9/449760325_7706351189413273_101240846473927362_n.png?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=3e4aKxF9Ot0Q7kNvgH1JnqX&_nc_ht=scontent.fmnl8-2.fna&oh=03_Q7cD1QHFABjjD0Be_FHMnWlLD9_ts9gQzC_DmaiuvfJVaH7Zgg&oe=66B77182')] bg-cover bg-center"></div>
+      <div
+        ref={lazyBgRef}
+        className="sm:pl-.5 absolute size-full overflow-clip rounded-lg bg-accent pl-1 pt-1 md:pl-2 md:pt-2"
+      >
+        <div className="absolute flex size-full items-center justify-center overflow-clip rounded-lg bg-cover bg-center"></div>
       </div>
     </div>
   );
@@ -82,7 +117,7 @@ function Divider() {
 
 function Context() {
   return (
-    <p className="text-sm text-gray-500 sm:text-base md:text-lg">
+    <p className="text-sm text-gray-400 sm:text-base md:text-lg">
       My name is Bryan Gonzales based in Bataan, Phillippines. I am a graduating
       student this year 2024 candidate for Compter Science Major in Software
       Development Degree. I a have a deep passion for building a maintainable
