@@ -17,14 +17,20 @@ export function AboutMe() {
           <ActionDiv>
             <DownloadCVBtn />
             <ContactDiv>
-              <img
-                src={mail}
-                className="m p-2 hover:cursor-pointer md:scale-125"
-              />
-              <img
-                src={github}
-                className="m p-2 hover:cursor-pointer md:scale-125"
-              />
+              <a className="md:scale-1250" href="mailto:brynrgnzls@gmail.com">
+                <img
+                  src={mail}
+                  className="m p-2 hover:cursor-pointer md:scale-125"
+                  alt="mail icon"
+                />
+              </a>
+              <a className="md:scale-125" href="https://github.com/brynrgnzls">
+                <img
+                  src={github}
+                  className="m p-2 hover:cursor-pointer md:scale-125"
+                  alt="github icon"
+                />
+              </a>
             </ContactDiv>
           </ActionDiv>
         </ContextGroup>

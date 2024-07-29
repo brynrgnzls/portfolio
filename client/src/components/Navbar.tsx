@@ -19,6 +19,7 @@ function Nav() {
     <NavLayout>
       <NavButton
         src={homeGray}
+        alt="home"
         activeSrc={homeAccent}
         active={activeNav === "home"}
         setNavHandler={handleSetActiveNav.bind(null, "home")}
@@ -28,6 +29,7 @@ function Nav() {
       </NavButton>
       <NavButton
         src={infoGray}
+        alt="info"
         activeSrc={infoAcecnt}
         active={activeNav === "info"}
         setNavHandler={handleSetActiveNav.bind(null, "info")}
@@ -37,6 +39,7 @@ function Nav() {
       </NavButton>
       <NavButton
         src={codeGray}
+        alt="project"
         activeSrc={codeAccent}
         active={activeNav === "project"}
         setNavHandler={handleSetActiveNav.bind(null, "project")}
@@ -46,6 +49,7 @@ function Nav() {
       </NavButton>
       <NavButton
         src={contactGray}
+        alt="contact"
         activeSrc={contactAccent}
         active={activeNav === "contact"}
         setNavHandler={handleSetActiveNav.bind(null, "contact")}
@@ -73,6 +77,7 @@ function NavButton({
   activeSrc,
   active = false,
   targetId,
+  alt,
   setNavHandler,
 }: NavButtonProp) {
   const handleNavChange = () => {
@@ -84,7 +89,7 @@ function NavButton({
       href={`#${targetId}`}
       onClick={handleNavChange}
     >
-      <ReactSVG src={active ? activeSrc : src} />
+      <img src={active ? activeSrc : src} alt={`${alt} nav`} />
 
       {children}
     </a>
@@ -95,6 +100,7 @@ function NavButton({
 type NavStateProps = "home" | "info" | "project" | "contact";
 
 interface NavButtonProp {
+  alt: NavStateProps;
   children: React.ReactNode;
   src: string;
   activeSrc: string;

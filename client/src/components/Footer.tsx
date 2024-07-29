@@ -40,11 +40,11 @@ function CopyrightLayout({ children }: { children: React.ReactNode }) {
 function SocialLinks() {
   return (
     <div className="flex justify-end gap-3">
-      <a href="#">
-        <ReactSVG src={githubLogo} />
+      <a href="https://github.com/brynrgnzls">
+        <img loading="lazy" alt="github logo" src={githubLogo} />
       </a>
-      <a href="#">
-        <ReactSVG src={linkedinLogo} />
+      <a href="https://www.linkedin.com/in/bryan-gonzales-460605320/">
+        <img loading="lazy" alt="github logo" src={linkedinLogo} />
       </a>
     </div>
   );

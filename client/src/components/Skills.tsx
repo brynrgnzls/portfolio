@@ -1,4 +1,3 @@
-import { ReactSVG } from "react-svg";
 import fastify_48 from "../assets/fastify_48.svg";
 import css_48 from "../assets/css_48.svg";
 import express_light_48 from "../assets/express_light_48.svg";
@@ -40,50 +39,53 @@ import { memo } from "react";
 
 function Skills() {
   return (
-    <div className="2xl my-10 p-4 sm:my-16 sm:px-10 md:px-[100px] lg:my-24 2xl:grid 2xl:grid-cols-12 2xl:px-[150px]" id="projects">
+    <div
+      className="2xl my-10 p-4 sm:my-16 sm:px-10 lg:my-24 lg:px-[100px] 2xl:grid 2xl:grid-cols-12 2xl:px-[150px]"
+      id="projects"
+    >
       <Header />
       <div className="sm:hidden">
         <SkillsIconsLayout>
-          <ReactSVG src={html_48} />
-          <ReactSVG src={css_48} />
-          <ReactSVG src={javascript_48} />
-          <ReactSVG src={react_48} />
-          <ReactSVG src={tailwindcss_48} />
-          <ReactSVG src={sass_48} />
-          <ReactSVG src={mui_48} />
-          <ReactSVG src={figma_48} />
-          <ReactSVG src={vitejs_48} />
-          <ReactSVG src={webpack_48} />
-          <ReactSVG src={typescript_48} />
-          <ReactSVG src={nodejs_48} />
-          <ReactSVG src={express_light_48} />
-          <ReactSVG src={fastify_48} />
-          <ReactSVG src={mongodb_48} />
-          <ReactSVG src={prisma_light_48} />
-          <ReactSVG src={github_48} />
-          <ReactSVG src={postman_48} />
+          <img loading="lazy" alt="html" src={html_48} />
+          <img loading="lazy" alt="css" src={css_48} />
+          <img loading="lazy" alt="javascript" src={javascript_48} />
+          <img loading="lazy" alt="react" src={react_48} />
+          <img loading="lazy" alt="tailwindcss" src={tailwindcss_48} />
+          <img loading="lazy" alt="sass" src={sass_48} />
+          <img loading="lazy" alt="mui" src={mui_48} />
+          <img loading="lazy" alt="figma" src={figma_48} />
+          <img loading="lazy" alt="vitejs" src={vitejs_48} />
+          <img loading="lazy" alt="webpack" src={webpack_48} />
+          <img loading="lazy" alt="typescript" src={typescript_48} />
+          <img loading="lazy" alt="node" src={nodejs_48} />
+          <img loading="lazy" alt="express" src={express_light_48} />
+          <img loading="lazy" alt="fastify" src={fastify_48} />
+          <img loading="lazy" alt="mongodb" src={mongodb_48} />
+          <img loading="lazy" alt="prisma" src={prisma_light_48} />
+          <img loading="lazy" alt="github" src={github_48} />
+          <img loading="lazy" alt="postman" src={postman_48} />
         </SkillsIconsLayout>
       </div>
       <div className="hidden sm:block 2xl:col-start-2 2xl:-col-end-2">
         <SkillsIconsLayout>
-          <ReactSVG src={html_64} />
-          <ReactSVG src={css_64} />
-          <ReactSVG src={javascript_64} />
-          <ReactSVG src={react_64} />
-          <ReactSVG src={tailwindcss_64} />
-          <ReactSVG src={sass_64} />
-          <ReactSVG src={mui_64} />
-          <ReactSVG src={figma_64} />
-          <ReactSVG src={vitejs_64} />
-          <ReactSVG src={webpack_64} />
-          <ReactSVG src={typescript_64} />
-          <ReactSVG src={nodejs_64} />
-          <ReactSVG src={express_light_64} />
-          <ReactSVG src={fastify_64} />
-          <ReactSVG src={mongodb_64} />
-          <ReactSVG src={prisma_light_64} />
-          <ReactSVG src={github_64} />
-          <ReactSVG src={postman_64} />
+          <img loading="lazy" alt="html" src={html_64} />
+          <img loading="lazy" alt="css" src={css_64} />
+          <img loading="lazy" alt="javascript" src={javascript_64} />
+          <img loading="lazy" alt="react" src={react_64} />
+          <img loading="lazy" alt="tailwindcss" src={tailwindcss_64} />
+          <img loading="lazy" alt="sass" src={sass_64} />
+          <img loading="lazy" alt="mui" src={mui_64} />
+          <img loading="lazy" alt="figma" src={figma_64} />
+          <img loading="lazy" alt="vitejs" src={vitejs_64} />
+          <img loading="lazy" alt="webpack" src={webpack_64} />
+          <img loading="lazy" alt="typescript" src={typescript_64} />
+          <img loading="lazy" alt="nodejs" src={nodejs_64} />
+          <img loading="lazy" alt="express" src={express_light_64} />
+          <img loading="lazy" alt="fastify" src={fastify_64} />
+          <img loading="lazy" alt="mongodb" src={mongodb_64} />
+          <img loading="lazy" alt="prisma" src={prisma_light_64} />
+          <img loading="lazy" alt="github" src={github_64} />
+          <img loading="lazy" alt="postman" src={postman_64} />
         </SkillsIconsLayout>
       </div>
     </div>
@@ -100,7 +102,7 @@ function SkillsIconsLayout({ children }: SkillsLayoutProps) {
 
 function Header() {
   return (
-    <p className="lg:3xl mb-4 text-lg font-semibold tracking-wider md:text-2xl 2xl:col-start-2">
+    <p className="mb-4 text-lg font-semibold tracking-wider sm:text-3xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:col-start-2">
       Skills
     </p>
   );
