@@ -4,7 +4,10 @@ import linkedinLogo from "../assets/linkedin_38x38.svg";
 
 function Footer() {
   return (
-    <footer className="bg-[#171717] px-4 pb-3 pt-6 sm:grid sm:grid-cols-8 sm:gap-y-5 sm:px-10" id="contact">
+    <footer
+      className="bg-[#171717] px-4 pb-3 pt-6 sm:grid sm:grid-cols-8 sm:gap-y-5 sm:px-10"
+      id="contact"
+    >
       <Contact />
       <CopyrightLayout>
         <SocialLinks />
@@ -21,7 +24,7 @@ function Contact() {
       <p className="mb-1 inline-block bg-accent bg-clip-text font-syne font-bold tracking-widest text-transparent sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">
         Get In Touch With Me
       </p>
-      <p className="sm: font-syne text-2xl tracking-widest underline sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+      <p className="flicker-animation sm: font-syne text-2xl tracking-widest underline sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
         brynrgnzls@gmail.com
       </p>
     </div>
