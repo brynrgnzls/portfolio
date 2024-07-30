@@ -1,0 +1,99 @@
+.text-animation-name {
+  border-right: 5px solid #fff;
+  white-space: nowrap;
+  animation:
+    cursor 0.5s infinite alternate,
+    typeforward 2.5s steps(16) forwards,
+    cursorhide 0.5s 2s forwards;
+}
+
+.text-animation-frontend {
+  border-right: 5px solid #fff;
+  white-space: nowrap;
+  animation:
+    opacityOn 0.5s 2.5s forwards,
+    cursor 0.5s 0.5s infinite alternate,
+    typeforward 1s steps(9) 2.4s forwards,
+    typebackward 1s steps(9) 3.4s forwards,
+    cursorhide 0.5s 4.5s forwards;
+}
+
+.text-animation-backend {
+  border-right: 5px solid #fff;
+  white-space: nowrap;
+  animation:
+    opacityOn 0.5s 4.5s forwards,
+    cursor 0.5s 3.8s infinite alternate,
+    typeforward 1s steps(8) 4.4s forwards,
+    typebackward 1s steps(8) 5.5s forwards,
+    cursorhide 0.5s 6s forwards;
+}
+
+.text-animation-fullstack {
+  border-right: 5px solid #fff;
+  white-space: nowrap;
+  animation:
+    opacityOn 0.5s 6.5s forwards,
+    cursor 0.5s 4.8s infinite alternate,
+    typeforward 1.5s steps(20) 6.4s alternate forwards,
+    cursorhide 0.5s 8s forwards;
+}
+
+.text-animation-context {
+  animation: text-scaleShow 2s 8s forwards;
+}
+
+@keyframes text-scaleShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cursor {
+  0%,
+  30% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: #fff;
+  }
+}
+
+@keyframes typeforward {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes typebackward {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes cursorhide {
+  from {
+    border-color: transparent;
+  }
+  to {
+    border-color: transparent;
+  }
+}
+
+@keyframes opacityOn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
