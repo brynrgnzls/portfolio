@@ -14,11 +14,11 @@ export default function useCursorMessageBroadcast() {
       x: e.clientX,
       y: e.clientY,
       message: messageRef.current,
-    }),
-      privateChannelRef.current.trigger(
-        "client-coord_message",
-        Object.fromEntries(userCoordMessage.entries()),
-      );
+    });
+    privateChannelRef.current.trigger(
+      "client-coord_message",
+      Object.fromEntries(userCoordMessage.entries()),
+    );
   };
   const handleCoordBroadcast = (data: Record<string, IUserCoordMessage>) => {
     setUserCoordMessage(new Map(Object.entries(data)));
@@ -34,32 +34,31 @@ export default function useCursorMessageBroadcast() {
 
     // remove message after 5s
     messageRemoveTimeoutId.current = setTimeout(() => {
-      const copyCoordMessage = new Map(userCoordMessage.entries());
-      copyCoordMessage.set(data.senderId, {
-        ...copyCoordMessage.get(data.senderId)!,
-        message: undefined,
-      });
+      userCoordMessage.delete(data.senderId)
       privateChannelRef.current.trigger(
         "client-coord_message",
-        Object.fromEntries(copyCoordMessage.entries()),
+        Object.fromEntries(userCoordMessage.entries()),
       );
       messageRef.current = undefined;
     }, 5000);
 
-    const copyCoordMessage = new Map(userCoordMessage.entries());
-    copyCoordMessage.set(data.senderId, {
-      ...copyCoordMessage.get(data.senderId)!,
+    userCoordMessage.set(data.senderId, {
+      ...userCoordMessage.get(data.senderId)!,
       message: data.message,
     });
 
     privateChannelRef.current.trigger(
       "client-coord_message",
-      Object.fromEntries(copyCoordMessage.entries()),
+      Object.fromEntries(userCoordMessage.entries()),
     );
   };
-  const handleMouseOut = (e: MouseEvent) => {
+  const handleMouseOut = () => {
     privateChannelRef.current.trigger("client-coord_message_out", {
       cookieId: localStorage.getItem("cookieId"),
+    });
+    setUserCoordMessage((prev) => {
+      prev.delete(localStorage.getItem("cookieId") || "");
+      return new Map(prev);
     });
   };
   const handleMouseOutBroadcast = (data: { cookieId: string }) => {
