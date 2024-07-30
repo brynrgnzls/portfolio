@@ -4,3 +4,4 @@ private
 .env.*
 .env
 build
+.vercel
