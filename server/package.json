@@ -10,7 +10,7 @@
     "start:prod": "dotenv -e .env -- tsx watch src;index.ts",
     "build": "pnpm exec tsc -p tsconfig.json",
     "clean": "rm -r build",
-    "vercel": "vercel dev "
+    "vercel": "pnpm exec vercel dev "
   },
   "keywords": [],
   "author": "brynrgnzls@gmail.com",
@@ -25,6 +25,7 @@
     "pusher-js": "8.4.0-rc2",
     "socket.io": "^4.7.5",
     "typescript": "^5.5.3",
+    "vercel": "^35.2.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
