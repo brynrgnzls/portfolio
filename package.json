@@ -6,7 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "pnpm --stream -r run start:dev",
-    "tailwind:dev": "pnpm --filter client run tailwindcss:dev"
+    "start:prod": "pnpm --stream -r run start:prod",
+    "build:prod": "pnpm --stream -r run build:prod",
+    "build:dev": "pnpm --stream -r run build:dev",
+    "tailwindcss:dev": "pnpm --filter client run tailwindcss:dev",
+    "tailwindcss:build": "pnpm --filter client run tailwindcss:build",
+    "build": "pnpm --stream -r run build"
   },
   "keywords": [],
   "author": "Bryan Gonzales",
