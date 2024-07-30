@@ -6,10 +6,11 @@ import Nav from "../components/Navbar";
 import Skills from "../components/Skills";
 import Timeline from "../components/Timeline";
 import Particles from "../components/Particles";
+import BroadcastCursors from "../components/BroadcastCursors";
 
 export default function Root() {
   return (
-    <div className="max-w-[100vw] overflow-x-hidden max-sm:pb-16">
+    <div className="relative overflow-x-hidden max-sm:pb-16">
       <MouseTexttInput />
       <Particles />
       <Nav />
@@ -18,6 +19,7 @@ export default function Root() {
       <Timeline />
       <Skills />
       <Footer />
+      <BroadcastCursors />
     </div>
   );
 }
