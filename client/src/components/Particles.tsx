@@ -2,9 +2,8 @@ import ParticleComp, {
   initParticlesEngine,
   IParticlesProps,
 } from "@tsparticles/react";
-import { Children, memo, useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo } from "react";
 import { loadSlim } from "@tsparticles/slim";
-import { Container } from "@tsparticles/engine";
 
 function Particles() {
   useEffect(() => {
@@ -12,8 +11,6 @@ function Particles() {
       await loadSlim(engine);
     });
   }, []);
-
-  const particlesLoaded = async (container?: Container) => {};
 
   const options = useMemo<IParticlesProps["options"]>(
     () => ({
@@ -23,10 +20,9 @@ function Particles() {
         },
       },
       fullScreen: {
-        enable: false,
-        zIndex: -50,
+        enable: true,
       },
-      fpsLimit: 120,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onClick: {
@@ -53,9 +49,9 @@ function Particles() {
         },
         links: {
           color: "#FFFFFF",
-          distance: 150,
+          distance: 125,
           enable: true,
-          opacity: 0.3,
+          opacity: 0.5,
           width: 1,
         },
         move: {
@@ -81,7 +77,7 @@ function Particles() {
           type: "circle",
         },
         size: {
-          value: { min: 2, max: 4 },
+          value: { min: 1, max: 4 },
         },
       },
 
@@ -92,9 +88,8 @@ function Particles() {
 
   return (
     <ParticleComp
-      className="absolute -z-50 h-screen w-screen"
+      className="absolute -z-50"
       id="particles"
-      particlesLoaded={particlesLoaded}
       options={options}
     />
   );

@@ -66,7 +66,7 @@ function MouseTextInput() {
     inputRef.current.value = "";
     setInputLength(0);
   };
-  const handleMouseOut = (e: MouseEvent) => {
+  const handleMouseOut = () => {
     if (!setInputOpen || !inputRef.current) return;
 
     inputRef.current.value = "";

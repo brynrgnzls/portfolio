@@ -1,4 +1,3 @@
-import { ReactSVG } from "react-svg";
 import cursor from "../assets/cursor_20.svg";
 import useCursorMessageBroadcast from "../hooks/useCursorMessageBroadcat";
 
@@ -7,7 +6,7 @@ export default function BroadcastCursors() {
 
   return (
     <>
-      {Array.from(userCoordMessage.entries()).map((key, value) => {
+      {Array.from(userCoordMessage.entries()).map((key) => {
         if (localStorage.getItem("cookieId") === key[0]) return;
         return <MousePointer key={key[0]} data={key[1]} />;
       })}
