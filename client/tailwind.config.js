@@ -18,14 +18,25 @@ export default {
           950: "#101010",
         },
         primary: "#c52323",
-        secondary: "#1115d5",
+        secondary: "#0f11f3",
       },
       backgroundImage: {
-        accent: "linear-gradient(120deg, rgb(197, 35, 35), rgb(17, 25, 213))",
+        accent: "linear-gradient(120deg, rgb(197, 35, 35), rgb(15, 17, 243))",
+        acccentText:
+          "linear-gradient(120deg, rgb(234, 73, 73), rgb(59, 80, 255))",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         syne: ["Syne", "sans-serif"],
+      },
+      keyframes: {
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+      },
+      animation: {
+        fadeOut: "fadeOut .5s 4.5s linear forwards",
       },
     },
   },
