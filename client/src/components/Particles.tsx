@@ -88,7 +88,7 @@ function Particles() {
 
   return (
     <ParticleComp
-      className="absolute -z-50"
+      className="absolute -z-50 w-full h-full"
       id="particles"
       options={options}
     />
