@@ -1,7 +1,6 @@
 import React, { memo } from "react";
 import githubLogo from "../assets/github_38x38.svg";
 import linkedinLogo from "../assets/linkedin_38x38.svg";
-import { ReactSVG } from "react-svg";
 
 function Footer() {
   return (

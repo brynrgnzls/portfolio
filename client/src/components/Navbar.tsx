@@ -1,4 +1,3 @@
-import { ReactSVG } from "react-svg";
 import homeAccent from "../assets/home_accent_30x30.svg";
 import homeGray from "../assets/home_gray_30x30.svg";
 import infoAcecnt from "../assets/info_accent_30x30.svg";

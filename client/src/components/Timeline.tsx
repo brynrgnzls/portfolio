@@ -53,10 +53,6 @@ function Header() {
 }
 
 // TYPES
-interface ChildProp {
-  children: React.ReactNode;
-}
-
 interface TimeProps {
   title: string;
   date: string;
