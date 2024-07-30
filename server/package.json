@@ -2,27 +2,34 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "indAPPex.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "dotenv -e .env.development -- tsx watch index.ts",
-    "start:prod": "dotenv -e .env -- tsx watch index.ts",
-    "build": "pnpm --package=typescript dlx tsc -p tsconfig.json"
+    "start:dev": "dotenv -e .env.development -- tsx watch src/index.ts",
+    "start:prod": "dotenv -e .env -- tsx watch src;index.ts",
+    "build": "pnpm exec tsc -p tsconfig.json",
+    "clean": "rm -r build",
+    "vercel": "vercel dev "
   },
   "keywords": [],
   "author": "brynrgnzls@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
-    "fastify": "^4.28.1",
+    "fastify": "4.23.2",
     "mongodb": "^6.8.0",
-    "tsc": "^2.0.4",
-    "typescript": "^5.5.3"
+    "pusher": "^5.2.0",
+    "pusher-js": "8.4.0-rc2",
+    "socket.io": "^4.7.5",
+    "typescript": "^5.5.3",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",
-    "tsx": "^4.16.2"
+    "tsx": "^4.16.2",
+    "type-defs": "workspace:packages"
   }
 }

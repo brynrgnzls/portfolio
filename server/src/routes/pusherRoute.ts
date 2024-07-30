@@ -3,7 +3,7 @@ import pusherController from "src/controllers/pusherController.js";
 
 export default function PuhserRoute(
   instance: FastifyInstance,
-  option: FastifyServerOptions,
+  _option: FastifyServerOptions,
   done: Function
 ) {
   instance.get("/user-auth", pusherController.userAuth);

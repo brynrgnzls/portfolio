@@ -1,11 +1,6 @@
 import { Db, MongoClient, ServerApiVersion } from "mongodb";
-import path from "node:path";
-import dotenv from "dotenv";
-dotenv.config({
-  path: path.resolve(`${import.meta.dirname}`, `.env.${process.env.NODE_ENV}`),
-});
 
-export default class MongoDbConnector {
+export class MongoDbConnector {
   private static client = new MongoClient(process.env.DB_URI as string, {
     serverApi: {
       version: ServerApiVersion.v1,

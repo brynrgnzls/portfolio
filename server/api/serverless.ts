@@ -1,10 +1,19 @@
-import fastify from "fastify";
+import Fastify, {
+  FastifyInstance,
+  FastifyRegister,
+  FastifyRequest,
+} from "fastify";
+import routes from "../src/app.js";
 
-const app = fastify();
+const app: FastifyInstance = Fastify({
+  logger: false,
+});
 
-app.register(import("../build/app.js"));
+app.register(routes, { prefix: "/" });
 
-export default async function (req, res) {
+// ======= ENDPOINTS ======= //
+
+export default async (req: FastifyRequest, res: FastifyRegister) => {
   await app.ready();
   app.server.emit("request", req, res);
-}
+};
