@@ -1,9 +1,12 @@
 import { memo } from "react";
-import pfp from "../assets/placeholder.png";
+import pfp from "../assets/placeholder.avif";
 
 function Cover() {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center px-4 max-sm:pb-16 sm:p-10 md:flex-row-reverse md:gap-6 md:px-[100px] 2xl:px-[150px]" id="home">
+    <div
+      className="flex h-screen w-screen flex-col items-center justify-center px-4 max-sm:pb-16 sm:px-10 md:gap-6 lg:flex-row-reverse 2xl:px-[150px]"
+      id="home"
+    >
       <Avatar />
       <ContextLayout>
         <Header />
@@ -63,9 +66,9 @@ function ButtonContainer({ children }: { children: React.ReactNode }) {
 function DownloadCVButton() {
   return (
     <div className="h-9 w-36 rounded-full border-2 border-solid bg-white text-sm text-dark-950 hover:border-white hover:bg-dark-950 hover:text-white sm:h-10 sm:text-base">
-      {" "}
       <a
-        href="#"
+        href="https://cdn.fbsbx.com/v/t59.2708-21/453485200_2020017631773909_6015256868390068888_n.pdf/Gonzales-Bryan-CV.pdf?_nc_cat=107&ccb=1-7&_nc_sid=2b0e22&_nc_eui2=AeGUMynQticVei0lKLUT6NBZtaKrV5q6aau1oqtXmrppq6xY2NPRXjB2jakLUBFnhQG6rx6fAEQ6ZdIc-7dhPtLC&_nc_ohc=TyXNP7q6UGgQ7kNvgERmfU0&_nc_ht=cdn.fbsbx.com&oh=03_Q7cD1QF-45jNSU1ZhYhSmlrxh_RRDhbDcQI2QkXcabKnfOrMJw&oe=66AA4D99&dl=1"
+        target="_blank"
         className="inline-block h-full w-full content-center text-center"
       >
         Download CV

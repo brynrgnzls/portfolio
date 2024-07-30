@@ -24,7 +24,11 @@ export function AboutMe() {
                   alt="mail icon"
                 />
               </a>
-              <a className="md:scale-125" href="https://github.com/brynrgnzls">
+              <a
+                className="md:scale-125"
+                target="_blank"
+                href="https://github.com/brynrgnzls"
+              >
                 <img
                   src={github}
                   className="m p-2 hover:cursor-pointer md:scale-125"
@@ -138,9 +142,13 @@ function Context() {
 
 function DownloadCVBtn() {
   return (
-    <div className="rounded-full border-2 border-solid bg-white px-5 py-2 text-sm text-dark-950 hover:cursor-pointer hover:border-white hover:bg-dark-950 hover:text-white sm:text-base">
+    <a
+      href="https://cdn.fbsbx.com/v/t59.2708-21/453485200_2020017631773909_6015256868390068888_n.pdf/Gonzales-Bryan-CV.pdf?_nc_cat=107&ccb=1-7&_nc_sid=2b0e22&_nc_eui2=AeGUMynQticVei0lKLUT6NBZtaKrV5q6aau1oqtXmrppq6xY2NPRXjB2jakLUBFnhQG6rx6fAEQ6ZdIc-7dhPtLC&_nc_ohc=TyXNP7q6UGgQ7kNvgERmfU0&_nc_ht=cdn.fbsbx.com&oh=03_Q7cD1QF-45jNSU1ZhYhSmlrxh_RRDhbDcQI2QkXcabKnfOrMJw&oe=66AA4D99&dl=1"
+      target="_blank"
+      className="inline-block rounded-full border-2 border-solid bg-white px-5 py-2 text-sm text-dark-950 hover:cursor-pointer hover:border-white hover:bg-dark-950 hover:text-white sm:text-base"
+    >
       Download CV
-    </div>
+    </a>
   );
 }
 
