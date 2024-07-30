@@ -1,1 +1,1 @@
-export * from "./requestBody.ts";
+export type { IPostMessageBody } from "./requestBody.js";
