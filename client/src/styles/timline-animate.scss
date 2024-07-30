@@ -1,15 +1,17 @@
-.timeline::after {
+.timeline-animation::after {
   animation: moveline 3s linear forwards;
 }
 
-.time {
+.time-animation {
   opacity: 0;
   animation: show 1s linear forwards;
 }
 
-.timeline {
+.timeline-animation {
   animation: movedown 1s linear forwards;
+  visibility: visible;
 }
+
 @keyframes moveline {
   0% {
     height: 0;
@@ -44,5 +46,18 @@
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+.test-animation {
+  animation: rotate 5s linear forwards;
+  animation-timeline: view();
+}
+@keyframes rotate {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1668px);
   }
 }
