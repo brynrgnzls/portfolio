@@ -12,7 +12,7 @@ function boradcastMessage(
   const bodySchema: z.ZodType<IPostMessageBody> = z.object({
     cookieId: z.string(),
     message: z.string(),
-    createdAt: z.coerce.date(),
+    createdAt: z.string(),
   });
   const bodyResult = bodySchema.safeParse(req.body);
   if (!bodyResult.success) {
