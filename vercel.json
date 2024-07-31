@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install",
-  "outputDirectory": "build",
+  "outputDirectory": "server/build",
   "rewrites": [
     {
       "source": "/(.*)",
