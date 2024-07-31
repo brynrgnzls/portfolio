@@ -15,5 +15,12 @@
   },
   "keywords": [],
   "author": "Bryan Gonzales",
-  "license": "ISC"
+  "license": "ISC",
+  "pnpm": {
+    "overrides": {
+      "semver@>=7.0.0 <7.5.2": ">=7.5.2",
+      "debug@>=4.0.0 <4.3.1": ">=4.3.1",
+      "tar@<6.2.1": ">=6.2.1"
+    }
+  }
 }

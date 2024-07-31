@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "rootDir": "./",
     "target": "ESNext",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
@@ -8,8 +9,12 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "outDir": "./build",
-    "typeRoots": ["./node_modules/@types", "./src/@types/fastify.d.ts", "src/@types/fastify.d.ts"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types/fastify.d.ts",
+      "src/@types/fastify.d.ts"
+    ],
     "lib": ["ESNext"]
   },
-  "include": ["src/**/*.ts", "api/serverless.ts", "src/app.ts"]
+  "include": ["src/**/*.ts"]
 }
