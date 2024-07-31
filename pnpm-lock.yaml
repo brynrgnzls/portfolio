@@ -75,7 +75,11 @@ importers:
         specifier: ^3.4.4
         version: 3.4.4(ts-node@10.9.1(@types/node@20.14.10))
 
-  packages/type-defs: {}
+  packages/type-defs:
+    dependencies:
+      typescript:
+        specifier: ^5.5.3
+        version: 5.5.3
 
   server:
     dependencies:
