@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyServerOptions } from "fastify";
-import pusherController from "src/controllers/pusherController.js";
+import pusherController from "../controllers/pusherController.js";
 
 export default function PuhserRoute(
   instance: FastifyInstance,

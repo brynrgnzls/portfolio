@@ -1,24 +1,17 @@
-import Fastify, { FastifyRegister, FastifyRequest } from "fastify";
+import Fastify, { FastifyReply, FastifyRequest } from "fastify";
 import routes from "../src/app.js";
-import { MyFastifyInstance } from "src/@types/my-fastsify.js";
 
-const app: MyFastifyInstance = Fastify({
-  logger: false,
+const app = Fastify({
+  logger: true,
 });
-
-app.register(routes, { prefix: "/ping" });
 
 app.get("/", async (req, res) => {
-  app.pusher.trigger("test-channel", "test-event", { ping: "pong" });
-  const dbAck = (await app.db.collection("test").insertOne({ hello: "world" }))
-    .acknowledged;
-
-  return res.send({ hello: "world", dbAck });
+  return res.status(200).send({ message: "Hello World" });
 });
 
-// ======= ENDPOINTS ======= //
+app.register(routes, { prefix: "/" });
 
-export default async (req: FastifyRequest, res: FastifyRegister) => {
+export default async (req: FastifyRequest, res: FastifyReply) => {
   await app.ready();
   app.server.emit("request", req, res);
 };

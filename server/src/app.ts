@@ -21,5 +21,6 @@ export default async function routes(
 
   instance.register(import("./routes/messageRoute.js"), { prefix: "/message" });
   instance.register(import("./routes/pusherRoute.js"), { prefix: "/pusher" });
+
   done();
 }
