@@ -1,5 +1,6 @@
 import { Db } from "mongodb";
 import Pusher from "pusher";
+import { FastifyInstance } from "fastify";
 
 declare module "fastify" {
   export interface FastifyInstance {
@@ -8,7 +9,7 @@ declare module "fastify" {
   }
 }
 
-export declare interface test {
-  test: string;
-  jupiter: number;
+interface MyFastifyInstance extends FastifyInstance {
+  db: Db;
+  pusher: Pusher;
 }

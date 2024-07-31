@@ -1,10 +1,11 @@
-import { FastifyServerOptions, FastifyInstance } from "fastify";
+import { FastifyServerOptions } from "fastify";
 import { MongoDbConnector } from "./models/index.js";
 import { pusher } from "./lib/index.js";
 import { fastifyCorsConfig } from "./configs/index.js";
+import type { MyFastifyInstance } from "./@types/my-fastsify.js";
 
 export default async function routes(
-  instance: FastifyInstance,
+  instance: MyFastifyInstance,
   _opts: FastifyServerOptions,
   done: () => void
 ) {
@@ -20,9 +21,5 @@ export default async function routes(
 
   instance.register(import("./routes/messageRoute.js"), { prefix: "/message" });
   instance.register(import("./routes/pusherRoute.js"), { prefix: "/pusher" });
-
-  instance.get("/", async (req, res) => {
-    return res.send({ hello: "world" });
-  });
   done();
 }
