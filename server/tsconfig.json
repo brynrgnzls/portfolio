@@ -1,20 +1,20 @@
-{
-  "compilerOptions": {
-    "baseUrl": "./",
-    "rootDir": "./",
-    "target": "ESNext",
-    "incremental": true,
-    "noUncheckedIndexedAccess": true,
-    "strict": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "outDir": "./build",
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types/fastify.d.ts",
-      "src/@types/fastify.d.ts"
-    ],
-    "lib": ["ESNext"]
-  },
-  "include": ["src/**/*.ts"]
-}
+  {
+    "compilerOptions": {
+      "baseUrl": "./",
+      "rootDir": "../",
+      "target": "ESNext",
+      "incremental": true,
+      "noUncheckedIndexedAccess": true,
+      "strict": true,
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "outDir": "./build",
+      "typeRoots": [
+        "./node_modules/@types",
+        "./src/@types/fastify.d.ts",
+        "src/@types/fastify.d.ts"
+      ],
+      "lib": ["ESNext"]
+    },
+    "include": ["src/**/*.ts"]
+  }
