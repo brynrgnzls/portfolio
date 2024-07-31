@@ -1,5 +1,4 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import type { IPostMessageBody } from "type-defs";
 import { z } from "zod";
 import { insertMessage } from "../models/index.js";
 
@@ -43,3 +42,9 @@ const messageController = {
 };
 
 export default messageController;
+
+interface IPostMessageBody {
+  cookieId: string;
+  message: string;
+  createdAt: string;
+}
