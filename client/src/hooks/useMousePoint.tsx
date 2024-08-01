@@ -4,7 +4,7 @@ export default function useMousePoint() {
   const [mousePoint, setMousePoint] = useState({ x: 0, y: 0 });
 
   const listenMouse = (e: MouseEvent) => {
-    setMousePoint({ x: e.clientX, y: e.clientY });
+    setMousePoint({ x: e.screenX, y: e.screenY });
   };
 
   useEffect(() => {
