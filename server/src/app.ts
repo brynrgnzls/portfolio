@@ -1,6 +1,4 @@
 import { FastifyServerOptions } from "fastify";
-import { MongoDbConnector } from "./models/index.js";
-import { pusher } from "./lib/index.js";
 import { fastifyCorsConfig } from "./configs/index.js";
 import type { MyFastifyInstance } from "./@types/my-fastsify.js";
 

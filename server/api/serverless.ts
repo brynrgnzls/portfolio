@@ -11,7 +11,7 @@ app.get("/", async (req, res) => {
 
 app.register(Routes, { prefix: "/" });
 
-export default async (req: FastifyRequest, res: FastifyReply) => {
+export default async function handler(req: FastifyRequest, res: FastifyReply) {
   await app.ready();
   app.server.emit("request", req, res);
-};
+}
