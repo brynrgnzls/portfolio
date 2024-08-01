@@ -4,7 +4,7 @@ import { pusher } from "./lib/index.js";
 import { fastifyCorsConfig } from "./configs/index.js";
 import type { MyFastifyInstance } from "./@types/my-fastsify.js";
 
-export default async function routes(
+export default async function Routes(
   instance: MyFastifyInstance,
   _opts: FastifyServerOptions,
   done: () => void
