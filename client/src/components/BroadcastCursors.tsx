@@ -17,12 +17,12 @@ export default function BroadcastCursors() {
 function MousePointer({ data }: IMousePointerProp) {
   return (
     <div
-      className="absolute z-50 flex items-center gap-2.5"
+      className="fixed z-50 flex h-6 gap-2.5"
       style={{ top: data.y, left: data.x }}
     >
       <img src={cursor} alt="other user's cursor" />
       {data.message && (
-        <p className="self-end rounded-md bg-dark-700 px-2 py-1 font-mono text-base font-light">
+        <p className="translate-x-0.5 translate-y-4 self-end rounded-md bg-dark-700 px-2 py-1 font-mono text-base font-light">
           {data.message}
         </p>
       )}
