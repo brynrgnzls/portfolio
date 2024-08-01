@@ -11,8 +11,6 @@ export class MongoDbConnector {
   private static dbInstance: Db;
 
   static async getDbInstance() {
-    console.log({ DbUri: process.env.DB_URI, DbName: process.env.DB_NAME });
-
     if (!this.dbInstance) {
       try {
         await this.client.connect();
@@ -23,7 +21,6 @@ export class MongoDbConnector {
         console.error(error);
       }
     }
-    console.log({ dbInstance: this.dbInstance });
     return this.dbInstance;
   }
 }
