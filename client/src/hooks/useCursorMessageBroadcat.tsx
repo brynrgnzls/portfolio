@@ -34,23 +34,40 @@ export default function useCursorMessageBroadcast() {
 
     // remove message after 5s
     messageRemoveTimeoutId.current = setTimeout(() => {
-      userCoordMessage.delete(data.senderId)
-      privateChannelRef.current.trigger(
-        "client-coord_message",
-        Object.fromEntries(userCoordMessage.entries()),
-      );
+      setUserCoordMessage((prev) => {
+        prev.set(data.senderId, {
+          ...prev.get(data.senderId)!,
+          message: undefined,
+        });
+        return new Map(prev);
+      });
       messageRef.current = undefined;
+      // userCoordMessage.delete(data.senderId);
+      // privateChannelRef.current.trigger(
+      //   "client-coord_message",
+      //   Object.fromEntries(userCoordMessage.entries()),
+      // );
+      // messageRef.current = undefined;
     }, 5000);
 
-    userCoordMessage.set(data.senderId, {
-      ...userCoordMessage.get(data.senderId)!,
-      message: data.message,
+    setUserCoordMessage((prev) => {
+      prev.set(data.senderId, {
+        ...prev.get(data.senderId)!,
+        message: data.message,
+      });
+
+      return new Map(prev);
     });
 
-    privateChannelRef.current.trigger(
-      "client-coord_message",
-      Object.fromEntries(userCoordMessage.entries()),
-    );
+    // userCoordMessage.set(data.senderId, {
+    //   ...userCoordMessage.get(data.senderId)!,
+    //   message: data.message,
+    // });
+
+    // privateChannelRef.current.trigger(
+    //   "client-coord_message",
+    //   Object.fromEntries(userCoordMessage.entries()),
+    // );
   };
   const handleMouseOut = () => {
     privateChannelRef.current.trigger("client-coord_message_out", {
