@@ -19,14 +19,24 @@ function boradcastMessage(
     return;
   }
 
-  // Insert data to database
-  insertMessage(this.db, bodyResult.data).then(() => {
-    // Pusher trigger
-    this.pusher.trigger("private-common", "client-message", {
-      senderId: bodyResult.data.cookieId,
-      message: bodyResult.data.message,
+  try {
+    // Insert data to database
+    insertMessage(this.db, bodyResult.data).then((data) => {
+      console.log("MessageInserted");
     });
-  });
+
+    // Broadcast message to all clients
+    this.pusher
+      .trigger("private-common", "message", {
+        senderId: bodyResult.data.cookieId,
+        message: bodyResult.data.message,
+      })
+      .then((data) => {
+        console.log("MessgaeBroadcasted");
+      });
+  } catch (error) {
+    console.error(error);
+  }
 
   return res.status(201).send({
     payload: {
