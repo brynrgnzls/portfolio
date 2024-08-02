@@ -1,12 +1,10 @@
 import Fastify, { FastifyReply, FastifyRequest } from "fastify";
 import Routes from "../src/app.js";
 
-const app = Fastify({
-  logger: true,
-});
+const app = Fastify();
 
 app.get("/", async (req, res) => {
-  return res.status(200).send({ message: "Hello World" });
+  return res.status(200).send({ message: "Hello Portfolio-server" });
 });
 
 app.register(Routes, { prefix: "/" });
