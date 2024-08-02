@@ -22,15 +22,10 @@ export default async function Routes(
   instance.register(import("./routes/messageRoute.js"), { prefix: "/message" });
   instance.register(import("./routes/pusherRoute.js"), { prefix: "/pusher" });
 
-  instance.get("/test", async (req, res) => {
+  instance.get("/adiibels", async (req, res) => {
     return res.send({
-      "Hello World": "Hello Test",
-      DBURI: process.env.DB_URI,
-      DBNAME: process.env.DB_NAME,
-      PUSHER_APP_ID: process.env.PUSHER_APP_ID,
-      PUSHER_APP_KEY: process.env.PUSHER_APP_KEY,
-      PUSHER_APP_SECRET: process.env.PUSHER_APP_SECRET,
-      PUSHER_APP_CLUSTER: process.env.PUSHER_APP_CLUSTER,
+      puhser: instance.pusher,
+      DBpring: instance.db.command({ ping: 1 }),
     });
   });
 
