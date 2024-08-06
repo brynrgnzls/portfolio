@@ -5,6 +5,7 @@
 .time-animation {
   opacity: 0;
   animation: show 1s linear forwards;
+  visibility: visible;
 }
 
 .timeline-animation {
@@ -46,18 +47,5 @@
   }
   100% {
     transform: translateY(0px);
-  }
-}
-
-.test-animation {
-  animation: rotate 5s linear forwards;
-  animation-timeline: view();
-}
-@keyframes rotate {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(1668px);
   }
 }
