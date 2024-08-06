@@ -22,7 +22,7 @@ function MousePointer({ data }: IMousePointerProp) {
     >
       <img src={cursor} alt="other user's cursor" />
       {data.message && (
-        <p className="translate-x-0.5 translate-y-4 self-end rounded-md bg-dark-700 px-2 py-1 font-mono text-base font-light">
+        <p className="self-end rounded-md bg-dark-700 px-2 py-1 font-mono text-base font-light">
           {data.message}
         </p>
       )}

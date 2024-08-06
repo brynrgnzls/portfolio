@@ -27,6 +27,7 @@ export default function useCursorMessageBroadcast() {
     message: string;
     senderId: string;
   }) => {
+    console.log({ someOneMessage: true, message: data.message });
     if (localStorage.getItem("cookieId") === data.senderId)
       messageRef.current = data.message;
     if (messageRemoveTimeoutId.current)
@@ -42,12 +43,6 @@ export default function useCursorMessageBroadcast() {
         return new Map(prev);
       });
       messageRef.current = undefined;
-      // userCoordMessage.delete(data.senderId);
-      // privateChannelRef.current.trigger(
-      //   "client-coord_message",
-      //   Object.fromEntries(userCoordMessage.entries()),
-      // );
-      // messageRef.current = undefined;
     }, 5000);
 
     setUserCoordMessage((prev) => {
@@ -58,16 +53,6 @@ export default function useCursorMessageBroadcast() {
 
       return new Map(prev);
     });
-
-    // userCoordMessage.set(data.senderId, {
-    //   ...userCoordMessage.get(data.senderId)!,
-    //   message: data.message,
-    // });
-
-    // privateChannelRef.current.trigger(
-    //   "client-coord_message",
-    //   Object.fromEntries(userCoordMessage.entries()),
-    // );
   };
   const handleMouseOut = () => {
     privateChannelRef.current.trigger("client-coord_message_out", {
@@ -108,7 +93,7 @@ export default function useCursorMessageBroadcast() {
       "client-coord_message_out",
       handleMouseOutBroadcast,
     );
-    privateChannelRef.current.bind("client-message", handleMessageBroadcast);
+    privateChannelRef.current.bind("message", handleMessageBroadcast);
 
     return () => {
       window.removeEventListener("mousemove", handleInnerMouseMove);
