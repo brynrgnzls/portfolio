@@ -1,10 +1,32 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 function Timeline() {
+  const observeEffect = () => {
+    const timeline = document.querySelector(".timeline")!;
+    const time = document.querySelectorAll(".time")!;
+
+    const timelineObserver = new IntersectionObserver(
+      (entries, observer) => {
+        if (entries[0].isIntersecting) {
+          timeline.classList.add("timeline-animation");
+          time.forEach((time) => time.classList.add("time-animation"));
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-175px" },
+    );
+    timelineObserver.observe(timeline);
+
+    return () => {
+      timelineObserver.disconnect();
+    };
+  };
+
+  useEffect(observeEffect, []);
   return (
     <div className="mx-4 my-10 sm:mx-10 sm:my-16 md:mx-[100px] lg:my-24 2xl:mx-[150px] 2xl:grid 2xl:grid-cols-12">
       <Header />
-      <div className="timeline timeline-container sm:[&>div:nth-child(odd)_.timepointer]:border-secondary relative after:absolute after:-top-0 after:left-0 after:h-full after:w-1 after:bg-accent sm:after:left-1/2 2xl:col-start-2 2xl:-col-end-2 sm:[&>div:nth-child(even)]:ml-auto sm:[&>div:nth-child(odd)]:pl-0 sm:[&>div:nth-child(odd)]:pr-12 sm:[&>div:nth-child(odd)_.timepointer]:-right-[16px] sm:[&>div:nth-child(odd)_.timepointer]:left-auto sm:[&>div:nth-child(odd)_.timepointer]:rotate-[135deg]">
+      <div className="timeline timeline-container invisible relative after:absolute after:-top-0 after:left-0 after:h-full after:w-1 after:bg-accent sm:after:left-1/2 2xl:col-start-2 2xl:-col-end-2 sm:[&>div:nth-child(even)]:ml-auto sm:[&>div:nth-child(odd)]:pl-0 sm:[&>div:nth-child(odd)]:pr-12 sm:[&>div:nth-child(odd)_.timepointer]:-right-[16px] sm:[&>div:nth-child(odd)_.timepointer]:left-auto sm:[&>div:nth-child(odd)_.timepointer]:rotate-[135deg] sm:[&>div:nth-child(odd)_.timepointer]:border-secondary">
         <Time
           title="On the Job Training"
           date="Oct. 11 2023 - Dec. 04, 2023"
@@ -40,7 +62,7 @@ function Time({ title, date, context }: TimeProps) {
 
 function TimePointer() {
   return (
-    <div className="timepointer border-primary absolute -left-[16px] z-50 size-7 -translate-x-[0px] rotate-[315deg] border-2 border-solid before:absolute before:size-[calc(100%+3px)] before:bg-dark-950"></div>
+    <div className="timepointer absolute -left-[16px] z-50 size-7 -translate-x-[0px] rotate-[315deg] border-2 border-solid border-primary before:absolute before:size-[calc(100%+3px)] before:bg-dark-950"></div>
   );
 }
 
