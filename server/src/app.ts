@@ -1,8 +1,8 @@
 import { FastifyServerOptions } from "fastify";
 import { fastifyCorsConfig } from "./configs/index.js";
 import type { MyFastifyInstance } from "./@types/my-fastsify.js";
-import { pusher } from "./lib/index.js";
 import { MongoDbConnector } from "./models/index.js";
+import Pusher from "pusher";
 
 export default async function Routes(
   instance: MyFastifyInstance,
@@ -12,7 +12,16 @@ export default async function Routes(
   instance.register(import("@fastify/cors"), fastifyCorsConfig);
 
   instance.decorate("db", await MongoDbConnector.getDbInstance());
-  instance.decorate("pusher", pusher);
+  instance.decorate(
+    "pusher",
+    new Pusher({
+      appId: process.env.PUSHER_APP_ID!,
+      key: process.env.PUSHER_KEY!,
+      secret: process.env.PUSHER_SECRET!,
+      cluster: process.env.PUSHER_CLUSTER!,
+      useTLS: true,
+    })
+  );
 
   instance.addHook("onError", (req, res, error, done) => {
     console.error(error);
