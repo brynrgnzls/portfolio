@@ -68,7 +68,7 @@ function Particles() {
           density: {
             enable: true,
           },
-          value: 250,
+          value: window.innerWidth < 640 ? 50 : 150,
         },
         opacity: {
           value: 1.0,
@@ -77,7 +77,7 @@ function Particles() {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 4 },
+          value: { min: 1, max: 3 },
         },
       },
 
@@ -88,7 +88,7 @@ function Particles() {
 
   return (
     <ParticleComp
-      className="absolute -z-50 w-full h-full"
+      className="absolute -z-50 h-full w-full"
       id="particles"
       options={options}
     />
