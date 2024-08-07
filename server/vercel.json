@@ -7,7 +7,7 @@
       "destination": "/api/serverless.ts"
     }
   ],
-  "headers ": [
+  "headers": [
     {
       "source": "/(.*)",
       "headers": [
