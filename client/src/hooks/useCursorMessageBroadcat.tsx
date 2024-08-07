@@ -27,7 +27,6 @@ export default function useCursorMessageBroadcast() {
     message: string;
     senderId: string;
   }) => {
-    console.log({ someOneMessage: true, message: data.message });
     if (localStorage.getItem("cookieId") === data.senderId)
       messageRef.current = data.message;
     if (messageRemoveTimeoutId.current)

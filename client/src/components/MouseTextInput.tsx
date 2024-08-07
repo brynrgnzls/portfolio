@@ -56,7 +56,6 @@ function MouseTextInput() {
       })
       .then((res) => {
         if (res.status === 201) {
-          console.log(res.data.payload.message);
           setMessage(res.data.payload.message);
           messageTimeoutId.current = setTimeout(() => {
             setMessage(undefined);
