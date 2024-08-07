@@ -5,3 +5,4 @@ private
 .env
 build
 .vercel
+server/src/configs/fastifyConfig.ts
