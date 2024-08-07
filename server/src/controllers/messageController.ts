@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { insertMessage } from "../models/index.js";
+import Pusher from "pusher";
 
 function boradcastMessage(
   this: FastifyInstance,
@@ -18,6 +19,13 @@ function boradcastMessage(
     res.status(400).send({ error: bodyResult.error.issues });
     return;
   }
+  const pusher = new Pusher({
+    appId: process.env.PUSHER_APP_ID!,
+    key: process.env.PUSHER_KEY!,
+    secret: process.env.PUSHER_SECRET!,
+    cluster: process.env.PUSHER_CLUSTER!,
+    useTLS: true,
+  });
 
   try {
     // Insert data to database
@@ -26,14 +34,11 @@ function boradcastMessage(
     });
 
     // Broadcast message to all clients
-    this.pusher
-      .trigger("private-common", "message", {
-        senderId: bodyResult.data.cookieId,
-        message: bodyResult.data.message,
-      })
-      .then((data) => {
-        console.log("MessgaeBroadcasted");
-      });
+
+    pusher.trigger("private-common", "message", {
+      senderId: bodyResult.data.cookieId,
+      message: bodyResult.data.message,
+    });
   } catch (error) {
     console.error(error);
   }
