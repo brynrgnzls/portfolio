@@ -4,7 +4,7 @@ import Routes from "../src/app.js";
 const app = Fastify();
 
 app.get("/", async (req, res) => {
-  return res.status(200).send({ message: "Hello Portfolio-server" });
+  return res.status(200).send({ message: "Hello Portfolio-server @new" });
 });
 
 app.register(Routes, { prefix: "/" });
