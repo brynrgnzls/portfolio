@@ -32,12 +32,10 @@ async function boradcastMessage(
     insertMessage(this.db, bodyResult.data);
 
     // Broadcast message to all clients
-
-    const data = await pusher.trigger("private-common", "message", {
+    await pusher.trigger("private-common", "message", {
       senderId: bodyResult.data.cookieId,
       message: bodyResult.data.message,
     });
-    console.log({ messageBroadcast: data.ok });
   } catch (error) {
     console.error(error);
   }
