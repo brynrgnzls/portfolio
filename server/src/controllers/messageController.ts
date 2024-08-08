@@ -19,6 +19,13 @@ async function boradcastMessage(
     res.status(400).send({ error: bodyResult.error.issues });
     return;
   }
+  const pusher = new Pusher({
+    appId: process.env.PUSHER_APP_ID!,
+    key: process.env.PUSHER_KEY!,
+    secret: process.env.PUSHER_SECRET!,
+    cluster: process.env.PUSHER_CLUSTER!,
+    useTLS: true,
+  });
 
   try {
     // Insert data to database
@@ -28,10 +35,11 @@ async function boradcastMessage(
 
     // Broadcast message to all clients
 
-    await this.pusher.trigger("private-common", "message", {
+    const data = await pusher.trigger("private-common", "message", {
       senderId: bodyResult.data.cookieId,
       message: bodyResult.data.message,
     });
+    console.log({ messageBroadcast: data.ok });
   } catch (error) {
     console.error(error);
   }
