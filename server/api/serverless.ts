@@ -4,9 +4,7 @@ import Routes from "../src/app.js";
 const app = Fastify({ logger: false });
 
 app.get("/", async (req, res) => {
-  return res
-    .status(200)
-    .send({ ServerStatus: "Running", Time: new Date(), request: req });
+  return res.status(200).send({ ServerStatus: "Running" });
 });
 
 app.register(Routes, { prefix: "/" });
