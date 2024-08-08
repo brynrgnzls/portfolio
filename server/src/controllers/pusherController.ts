@@ -5,32 +5,20 @@ function channelAuth(
   req: FastifyRequest<IChannelAuthRequestprops>,
   res: FastifyReply
 ) {
-  const { socket_id, channel_name, callback } = req.query;
-
-  const auth = JSON.stringify(
-    this.pusher.authorizeChannel(socket_id, channel_name)
   const authResponse = this.pusher.authorizeChannel(
     req.body.socket_id,
     req.body.channel_name
   );
-
-  if (channel_name === "private-common") {
-    const cb = callback.replace(/\\"/g, "") + "(" + auth + ");";
-    return res.header("Content-Type", "application/javascript").send(cb);
-  }
-
-  return res.code(500).send({ error: "Server Unconfigured" });
-}
-
+  return res.send(authResponse);
 }
 
 interface IChannelAuthRequestprops {
-  Body: never;
-  Querystring: {
+  Body: {
     socket_id: string;
     channel_name: string;
     callback: string;
   };
+  Querystring: never;
   Params: never;
 }
 
