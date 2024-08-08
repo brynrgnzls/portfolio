@@ -29,9 +29,7 @@ async function boradcastMessage(
 
   try {
     // Insert data to database
-    insertMessage(this.db, bodyResult.data).then((data) => {
-      console.log("MessageInserted");
-    });
+    insertMessage(this.db, bodyResult.data);
 
     // Broadcast message to all clients
 
