@@ -1,4 +1,4 @@
-import { FastifyServerOptions } from "fastify";
+import { FastifyRequest, FastifyServerOptions } from "fastify";
 import { fastifyCorsConfig } from "./configs/index.js";
 import type { MyFastifyInstance } from "./@types/my-fastsify.js";
 import { MongoDbConnector } from "./models/index.js";
@@ -10,6 +10,7 @@ export default async function Routes(
   done: Function
 ) {
   instance.register(import("@fastify/cors"), fastifyCorsConfig);
+  instance.register(import("@fastify/formbody"));
 
   instance.decorate("db", await MongoDbConnector.getDbInstance());
   instance.decorate(
@@ -31,7 +32,7 @@ export default async function Routes(
   instance.register(import("./routes/messageRoute.js"), { prefix: "/message" });
   instance.register(import("./routes/pusherRoute.js"), { prefix: "/pusher" });
 
-  instance.get("/adiibels", async (req, res) => {
+  instance.post("/adiibels", async (req, res) => {
     return res.send({
       puhser: instance.pusher,
       DBpring: instance.db.command({ ping: 1 }),
