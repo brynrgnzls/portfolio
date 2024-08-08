@@ -9,11 +9,11 @@ class PusherClass {
         cluster: "ap1",
         userAuthentication: {
           endpoint: `${process.env.SERVER_BASE_URL}/pusher/user-auth`,
-          transport: "jsonp",
+          transport: "ajax",
         },
         channelAuthorization: {
           endpoint: `${process.env.SERVER_BASE_URL}/pusher/channel-auth`,
-          transport: "jsonp",
+          transport: "ajax",
         },
       });
     }
