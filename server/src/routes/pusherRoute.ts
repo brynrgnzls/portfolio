@@ -6,7 +6,6 @@ export default function PuhserRoute(
   _option: FastifyServerOptions,
   done: Function
 ) {
-  instance.get("/user-auth", pusherController.userAuth);
-  instance.get("/channel-auth", pusherController.channelAuth);
+  instance.post("/channel-auth", pusherController.channelAuth);
   done();
 }
